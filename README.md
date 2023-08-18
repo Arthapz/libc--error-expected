@@ -19,7 +19,7 @@ checking for flags (-stdlib=libc++) ... ok
 > clang "-stdlib=libc++" "-Qunused-arguments" "-m64"
 checking for flags (-fexperimental-library) ... ok
 > clang "-fexperimental-library" "-Qunused-arguments" "-m64"
-clang-scan-deps --format=p1689 -- clang -x c++ -c src\main.cpp -o build\.objs\test\windows\x64\release\src\main.cpp.obj -Qunused-arguments -m64 -std=c++23 -Iinclude -fexceptions -fcxx-exceptions -isystem C:\Dev\llvm\include\c++\v1 -stdlib=libc++ -fexperimental-library
+clang-scan-deps --format=p1689 -- clang -x c++ -c src\main.cpp -o build\.objs\test\windows\x64\release\src\main.cpp.obj -Qunused-arguments -m64 -std=c++23 -Iinclude -fexceptions -fcxx-exceptions -stdlib=libc++ -fexperimental-library
 checking for flags (clang_modules_cache_path) ... ok
 > clang "-fmodules-cache-path=C:\Users\arthu\AppData\Local\Temp\.xmake\230818" "-Qunused-arguments" "-m64"
 [  0%]: generating.module.deps stdmodules\std.cppm
@@ -73,38 +73,34 @@ C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.38.
       |                                               ^
 3 warnings generated.
 checking for flags (clang_module_file) ... ok
-> clang "-fmodule-file=C:\Users\arthu\AppData\Local\Temp\.xmake\230818\_D8F01EBBC2B44D60871F70AEEEFFB790.pcm" "-Qunused-arguments" "-m64"
+> clang "-fmodule-file=C:\Users\arthu\AppData\Local\Temp\.xmake\230818\_97F12A032492476081EB24748F01B070.pcm" "-Qunused-arguments" "-m64"
 [ 27%]: archiving.release stdmodules.lib
 llvm-ar cr build\windows\x64\release\stdmodules.lib build\.objs\stdmodules\windows\x64\release\stdmodules\std.cppm.obj
 [ 72%]: compiling.release src\main.cpp
-clang -c -Qunused-arguments -m64 -std=c++23 -Iinclude -fexceptions -fcxx-exceptions -isystem C:\Dev\llvm\include\c++\v1 -stdlib=libc++ -fexperimental-library -fmodule-file=std=build\.gens\stdmodules\windows\x64\release\rules\modules\cache\a3c3afdf\std.pcm -o build\.objs\test\windows\x64\release\src\main.cpp.obj src\main.cpp
+clang -c -Qunused-arguments -m64 -std=c++23 -Iinclude -fexceptions -fcxx-exceptions -stdlib=libc++ -fexperimental-library -fmodule-file=std=build\.gens\stdmodules\windows\x64\release\rules\modules\cache\a3c3afdf\std.pcm -o build\.objs\test\windows\x64\release\src\main.cpp.obj src\main.cpp
 checking for flags (-MMD -MF) ... ok
-> clang "-MMD" "-MF" "C:\Users\arthu\AppData\Local\Temp\.xmake\230818\_12F78A112A884B70852A80A53A126690" "-Qunused-arguments" "-m64"
-error: @programdir\modules\private\async\runjobs.lua:256: @programdir\modules\private\action\build\object.lua:91: @programdir\modules\core\tools\gcc.lua:797: src\main.cpp:10:43: error: expected ';' after expression
-   10 |   std::print("Hello World", foo().value())
-      |                                           ^
-      |                                           ;
-In module 'std' imported from src\main.cpp:1:
-C:\Dev\llvm\include\c++\v1\__expected\expected.h:87:29: error: missing '#include <__expected/expected.h>'; '_Err' must be declared before it is used
+> clang "-MMD" "-MF" "C:\Users\arthu\AppData\Local\Temp\.xmake\230818\_2FE7BB27284D486088C75F5580600180" "-Qunused-arguments" "-m64"
+error: @programdir\modules\private\async\runjobs.lua:256: @programdir\modules\private\action\build\object.lua:91: @programdir\modules\core\tools\gcc.lua:797: In module 'std' imported from src\main.cpp:1:
+C:\Dev\llvm\include\c++\v1\__expected\expected.h:87:29: error: missing '#include "expected.h"'; '_Err' must be declared before it is used
    87 |   throw bad_expected_access<_Err>(std::forward<_Arg>(__arg));
       |                             ^
 C:\Dev\llvm\include\c++\v1\__expected\expected.h:84:17: note: declaration here is not visible
    84 | template <class _Err, class _Arg>
       |                 ^
-C:\Dev\llvm\include\c++\v1\__expected\expected.h:87:48: error: missing '#include <__expected/expected.h>'; '_Arg' must be declared before it is used
+C:\Dev\llvm\include\c++\v1\__expected\expected.h:87:48: error: missing '#include "expected.h"'; '_Arg' must be declared before it is used
    87 |   throw bad_expected_access<_Err>(std::forward<_Arg>(__arg));
       |                                                ^
 C:\Dev\llvm\include\c++\v1\__expected\expected.h:84:29: note: declaration here is not visible
    84 | template <class _Err, class _Arg>
       |                             ^
-C:\Dev\llvm\include\c++\v1\__expected\expected.h:87:54: error: missing '#include <__expected/expected.h>'; '__arg' must be declared before it is used
+C:\Dev\llvm\include\c++\v1\__expected\expected.h:87:54: error: missing '#include "expected.h"'; '__arg' must be declared before it is used
    87 |   throw bad_expected_access<_Err>(std::forward<_Arg>(__arg));
       |                                                      ^
 C:\Dev\llvm\include\c++\v1\__expected\expected.h:85:63: note: declaration here is not visible
    85 | _LIBCPP_HIDE_FROM_ABI void __throw_bad_expected_access(_Arg&& __arg) {
       |                                                               ^
 In module 'std' imported from src\main.cpp:1:
-C:\Dev\llvm\include\c++\v1\print:339:42: error: missing '#include <print>'; '_Args' must be declared before it is used
+C:\Dev\llvm\include\c++\v1\print:339:42: error: missing '#include "print"'; '_Args' must be declared before it is used
   339 |   std::print(stdout, __fmt, std::forward<_Args>(__args)...);
       |                                          ^
 C:\Dev\llvm\include\c++\v1\print:337:20: note: declaration here is not visible
@@ -123,9 +119,9 @@ C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_wstdio.
    37 | #define stdout (__acrt_iob_func(1))
       |                 ^
 src\main.cpp:10:8: note: in instantiation of function template specialization 'std::__1::print<int>' requested here
-   10 |   std::print("Hello World", foo().value())
+   10 |   std::print("Hello World", foo().value());
       |        ^
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_wstdio.h:34:28: note: '__acrt_iob_func' should be declared prior to the call site
    34 | _ACRTIMP_ALT FILE* __cdecl __acrt_iob_func(unsigned _Ix);
       |                            ^
-8 errors generated.
+7 errors generated.
