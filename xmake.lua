@@ -1,4 +1,3 @@
-add_sysincludedirs("C:/Dev/llvm/include/c++/v1")
 add_linkdirs("C:/Dev/llvm/lib")
 add_cxxflags("-stdlib=libc++", "-fexperimental-library")
 
@@ -9,6 +8,7 @@ target("stdmodules")
     add_files("stdmodules/**.cppm")
 
     add_cxxflags("clang::-Wno-reserved-module-identifier")
+    add_sysincludedirs("C:/Dev/llvm/include/c++/v1")
 
 target("test")
     set_kind("binary")
