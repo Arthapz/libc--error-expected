@@ -7,7 +7,6 @@ target("stdmodules")
     set_languages("c++latest")
 
     add_files("stdmodules/**.cppm")
-target_end()
 
 target("test")
     set_kind("binary")
