@@ -23,16 +23,15 @@ clang-scan-deps --format=p1689 -- clang -x c++ -c src\main.cpp -o build\.objs\te
 checking for flags (clang_modules_cache_path) ... ok
 > clang "-fmodules-cache-path=C:\Users\arthu\AppData\Local\Temp\.xmake\230818" "-Qunused-arguments" "-m64"
 [  0%]: generating.module.deps stdmodules\std.cppm
-clang-scan-deps --format=p1689 -- clang -x c++ -c stdmodules\std.cppm -o build\.objs\stdmodules\windows\x64\release\stdmodules\std.cppm.obj -Qunused-arguments -m64 -std=c++23 -fexceptions -fcxx-exceptions -isystem C:\Dev\llvm\include\c++\v1 -stdlib=libc++ -fexperimental-library
+checking for flags (-Wno-reserved-module-identifier) ... ok
+> clang "-Wno-reserved-module-identifier" "-Qunused-arguments" "-m64"
+clang-scan-deps --format=p1689 -- clang -x c++ -c stdmodules\std.cppm -o build\.objs\stdmodules\windows\x64\release\stdmodules\std.cppm.obj -Qunused-arguments -m64 -std=c++23 -fexceptions -fcxx-exceptions -isystem C:\Dev\llvm\include\c++\v1 -stdlib=libc++ -fexperimental-library -Wno-reserved-module-identifier
 checking for flags (clang_module_output) ... ok
 > clang "-fmodule-output=" "-Qunused-arguments" "-m64"
 [  9%]: compiling.module.release std
-clang -c -x c++-module -fmodule-output=build\.gens\stdmodules\windows\x64\release\rules\modules\cache\a3c3afdf\std.pcm -Qunused-arguments -m64 -std=c++23 -fexceptions -fcxx-exceptions -isystem C:\Dev\llvm\include\c++\v1 -stdlib=libc++ -fexperimental-library -fmodules-cache-path=build\.gens\stdmodules\windows\x64\release\rules\modules\cache -o build\.objs\stdmodules\windows\x64\release\stdmodules\std.cppm.obj stdmodules\std.cppm
+clang -c -x c++-module -fmodule-output=build\.gens\stdmodules\windows\x64\release\rules\modules\cache\a3c3afdf\std.pcm -Qunused-arguments -m64 -std=c++23 -fexceptions -fcxx-exceptions -isystem C:\Dev\llvm\include\c++\v1 -stdlib=libc++ -fexperimental-library -Wno-reserved-module-identifier -fmodules-cache-path=build\.gens\stdmodules\windows\x64\release\rules\modules\cache -o build\.objs\stdmodules\windows\x64\release\stdmodules\std.cppm.obj stdmodules\std.cppm
 checking for flags (-fdiagnostics-color=always) ... ok
 > clang "-fdiagnostics-color=always" "-Qunused-arguments" "-m64"
-stdmodules\std.cppm:153:15: warning: 'std' is a reserved name for a module [-Wreserved-module-identifier]
-  153 | export module std;
-      |               ^
 In file included from stdmodules\std.cppm:187:
 stdmodules/std/ctime.inc:23:12: warning: '_ctime64' is deprecated: This function or variable may be unsafe. Consider using _ctime64_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [-Wdeprecated-declarations]
    23 |     return _ctime64(_Time);
@@ -72,15 +71,15 @@ C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.38.
 C:\Program Files (x86)\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.38.32919\include\vcruntime.h:345:47: note: expanded from macro '_CRT_DEPRECATE_TEXT'
   345 | #define _CRT_DEPRECATE_TEXT(_Text) __declspec(deprecated(_Text))
       |                                               ^
-4 warnings generated.
+3 warnings generated.
 checking for flags (clang_module_file) ... ok
-> clang "-fmodule-file=C:\Users\arthu\AppData\Local\Temp\.xmake\230818\_DC44F7A7E27546708C11C3A33B8662E0.pcm" "-Qunused-arguments" "-m64"
+> clang "-fmodule-file=C:\Users\arthu\AppData\Local\Temp\.xmake\230818\_D8F01EBBC2B44D60871F70AEEEFFB790.pcm" "-Qunused-arguments" "-m64"
 [ 27%]: archiving.release stdmodules.lib
 llvm-ar cr build\windows\x64\release\stdmodules.lib build\.objs\stdmodules\windows\x64\release\stdmodules\std.cppm.obj
 [ 72%]: compiling.release src\main.cpp
 clang -c -Qunused-arguments -m64 -std=c++23 -Iinclude -fexceptions -fcxx-exceptions -isystem C:\Dev\llvm\include\c++\v1 -stdlib=libc++ -fexperimental-library -fmodule-file=std=build\.gens\stdmodules\windows\x64\release\rules\modules\cache\a3c3afdf\std.pcm -o build\.objs\test\windows\x64\release\src\main.cpp.obj src\main.cpp
 checking for flags (-MMD -MF) ... ok
-> clang "-MMD" "-MF" "C:\Users\arthu\AppData\Local\Temp\.xmake\230818\_F2402686F3CD46408AFEE599FD67E0B0" "-Qunused-arguments" "-m64"
+> clang "-MMD" "-MF" "C:\Users\arthu\AppData\Local\Temp\.xmake\230818\_12F78A112A884B70852A80A53A126690" "-Qunused-arguments" "-m64"
 error: @programdir\modules\private\async\runjobs.lua:256: @programdir\modules\private\action\build\object.lua:91: @programdir\modules\core\tools\gcc.lua:797: src\main.cpp:10:43: error: expected ';' after expression
    10 |   std::print("Hello World", foo().value())
       |                                           ^
@@ -130,4 +129,3 @@ C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_wstdio.
    34 | _ACRTIMP_ALT FILE* __cdecl __acrt_iob_func(unsigned _Ix);
       |                            ^
 8 errors generated.
-```
