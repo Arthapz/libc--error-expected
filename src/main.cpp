@@ -7,7 +7,7 @@ auto foo() -> Foo {
 }
 
 int main() {
-  std::print("Hello World", foo().value());
+  foo().value();
 
   return 0;
 }
