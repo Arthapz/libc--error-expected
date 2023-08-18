@@ -8,6 +8,8 @@ target("stdmodules")
 
     add_files("stdmodules/**.cppm")
 
+    add_cxxflags("clang::-Wno-reserved-module-identifier")
+
 target("test")
     set_kind("binary")
     set_languages("c++latest")
