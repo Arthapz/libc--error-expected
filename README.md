@@ -1,5 +1,6 @@
 ```
 #install xmake
+#compile LLVM from master
 
 xmake f --toolchain=clang
 xmake b -vD
