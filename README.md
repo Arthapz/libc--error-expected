@@ -1,5 +1,7 @@
 ```
 #install xmake
+#update it to dev
+xmake update -s dev
 #compile LLVM from master
 
 xmake f --toolchain=clang
